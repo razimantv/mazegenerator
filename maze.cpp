@@ -1,6 +1,6 @@
-/*  solar.cpp: Generates a maze of arbitrary size using Kruskal's algorithm
+/*  maze.cpp: Generates a maze of arbitrary size using Kruskal's algorithm
  *
- *  Note: The program uses gnuplot to generate the graphical mesh
+ *  Note: The program uses gnuplot to generate the graphical maze
  *        Ensure that gnuplot has been installed and is part of the path before
  *        running the program.
  *
