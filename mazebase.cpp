@@ -1,10 +1,12 @@
 /* mazebase.cpp
- * Basic functions for dealing with meshes : implementations
+ * Basic functions for dealing with mazes : implementations
  */
 
 # include <cstdio>
 # include <iostream>
 # include "mazebase.h"
+
+const int neigh[4][2]={{0,1},{0,-1},{1,0},{-1,0}};
 
 int initmaze(int H,int W,std::vector<std::vector<char>>& maze)
 {

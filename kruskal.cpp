@@ -1,5 +1,5 @@
 /* kruskal.cpp
- * Generate the mesh based on Kruskal's algorithm : implementations
+ * Generate the maze based on Kruskal's algorithm : implementations
  */
 
 # include <algorithm>
@@ -104,6 +104,7 @@ int Kruskal_createmaze(int H,int W,std::vector<std::vector<char>>& maze)
   {
     std::cerr<<"Maze creation using Kruskal failed : ";
     std::cerr<<"Error initializing maze vector\n";
+    return 1;
   }
 
   //Initialize the various arrays

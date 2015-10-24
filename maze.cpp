@@ -6,6 +6,7 @@
 # include <vector>
 # include "mazebase.h"
 # include "kruskal.h"
+# include "dfs.h"
 
 int main()
 {
@@ -20,7 +21,13 @@ int main()
 
   //Generate maze using Kruskal's algorithm
   Kruskal_createmaze(H,W,v);
-  plot(H,W,v,"Kruskal");
+  plot(H,W,v,"kruskal");
+
+  //Generate maze using DFS
+  v.clear();
+  DFS_createmaze(H,W,v);
+  plot(H,W,v,"dfs");
+
   return 0;
 }
 

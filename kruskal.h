@@ -1,5 +1,5 @@
 /* kruskal.h
- * Generate the mesh based on Kruskal's algorithm : declarations
+ * Generate the maze based on Kruskal's algorithm : declarations
  */
 
 # ifndef KRUSKAL_H
