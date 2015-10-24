@@ -70,7 +70,7 @@ int Prim_createmaze(int H,int W,std::vector<std::vector<char>>& maze)
   err=initmaze(H,W,maze);
   if(err)
   {
-    std::cerr<<"Maze creation using DFS failed : ";
+    std::cerr<<"Maze creation using Prim's algorithm failed : ";
     std::cerr<<"Error initializing maze vector\n";
     return 1;
   }
