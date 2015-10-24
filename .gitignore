@@ -2,3 +2,4 @@ maze
 **/*.swp
 tags
 out/*.plt
+**/*.o
