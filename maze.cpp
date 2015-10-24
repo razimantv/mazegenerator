@@ -144,7 +144,7 @@ int main()
 
   //Standard Kruskal's algorithm implementation
   //Remove as many edges as we can without introducing cycles
-  for(int i=0;i<kruskalarray.size();i++)
+  for(int i=0;i<(int)kruskalarray.size();i++)
   {
     int u=kruskalarray[i]/(H*W),v=kruskalarray[i]%(H*W);
     if(getparent(u)==getparent(v))
