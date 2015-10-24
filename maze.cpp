@@ -8,6 +8,7 @@
 # include "kruskal.h"
 # include "dfs.h"
 # include "prim.h"
+# include "subdivide.h"
 
 int main()
 {
@@ -33,6 +34,11 @@ int main()
   v.clear();
   Prim_createmaze(H,W,v);
   plot(H,W,v,"out/prim");
+
+  //Generate maze using recursive subdivision
+  v.clear();
+  subdivision_createmaze(H,W,v);
+  plot(H,W,v,"out/subdivision");
 
   return 0;
 }

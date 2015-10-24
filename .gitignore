@@ -1,2 +1,4 @@
 maze
 **/*.swp
+tags
+out/*.plt
