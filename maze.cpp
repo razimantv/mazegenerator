@@ -7,6 +7,7 @@
 # include "mazebase.h"
 # include "kruskal.h"
 # include "dfs.h"
+# include "prim.h"
 
 int main()
 {
@@ -21,12 +22,17 @@ int main()
 
   //Generate maze using Kruskal's algorithm
   Kruskal_createmaze(H,W,v);
-  plot(H,W,v,"kruskal");
+  plot(H,W,v,"out/kruskal");
 
   //Generate maze using DFS
   v.clear();
   DFS_createmaze(H,W,v);
-  plot(H,W,v,"dfs");
+  plot(H,W,v,"out/dfs");
+
+  //Generate maze using Prim's algorithm
+  v.clear();
+  Prim_createmaze(H,W,v);
+  plot(H,W,v,"out/prim");
 
   return 0;
 }

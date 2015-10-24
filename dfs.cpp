@@ -6,8 +6,9 @@
 # include <iostream>
 # include <vector>
 # include "mazebase.h"
+# include "dfs.h"
 
-void DFS_algorithm(int u,int v,int H,int W,std::vector<std::vector<char>> &seen,
+void DFS_algorithm(int u,int v,int H,int W,std::vector<std::vector<char>>& seen,
     std::vector<std::vector<char>>& maze)
 {
   seen[u][v]=1;

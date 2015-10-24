@@ -8,7 +8,7 @@
 # include <vector>
 
 //DFS algorithm to generate a maze with a unique solution
-void DFS_algorithm(int u,int v,int H,int W,std::vector<std::vector<char>> &seen,
+void DFS_algorithm(int u,int v,int H,int W,std::vector<std::vector<char>>& seen,
     std::vector<std::vector<char>>& maze);
 
 //Create a maze of given size
