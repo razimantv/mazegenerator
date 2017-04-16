@@ -1,5 +1,6 @@
-maze
-**/*.swp
+mazegen
+*.swp
 tags
-out/*.plt
-**/*.o
+*.plt
+*.o
+examples/*_*.png
