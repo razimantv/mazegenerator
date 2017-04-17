@@ -53,5 +53,5 @@ void RectangularMaze::InitialiseGraph() {
 
 std::tuple<double, double, double, double>
 RectangularMaze::GetCoordinateBounds() const {
-  return {0, 0, width_, height_};
+  return std::make_tuple(0, 0, width_, height_);
 }

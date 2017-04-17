@@ -49,14 +49,14 @@ std::tuple<double, double, double, double> HoneyCombMaze::GetEdge(
   double cx = dxu * u + dxv * v, cy = dyu * u + dyv * v;
 
   double theta1 = (edge - 2.5) * M_PI / 3, theta2 = theta1 + M_PI / 3;
-  return {cx + cos(theta1), cy + sin(theta1), cx + cos(theta2),
-          cy + sin(theta2)};
+  return std::make_tuple(cx + cos(theta1), cy + sin(theta1), cx + cos(theta2),
+                         cy + sin(theta2));
 }
 
 std::tuple<double, double, double, double> HoneyCombMaze::GetCoordinateBounds()
     const {
   double xlim = sqrt(3) * (size_ - 0.5), ylim = 1.5 * size_ - 0.5;
-  return {-xlim, -ylim, xlim, ylim};
+  return std::make_tuple(-xlim, -ylim, xlim, ylim);
 }
 
 std::pair<int, int> HoneyCombMaze::VExtent(int u) {

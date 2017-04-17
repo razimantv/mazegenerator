@@ -4,3 +4,4 @@ tags
 *.plt
 *.o
 examples/*_*.png
+examples/*_*.svg

@@ -42,5 +42,5 @@ std::shared_ptr<CellBorder> CircularHexagonMaze::GetEdge(int sector, int row,
 
 std::tuple<double, double, double, double>
 CircularHexagonMaze::GetCoordinateBounds() const {
-  return {-size_, -size_, size_, size_};
+  return std::make_tuple(-size_, -size_, size_, size_);
 }

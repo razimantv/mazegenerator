@@ -54,5 +54,5 @@ void CircularMaze::InitialiseGraph() {
 
 std::tuple<double, double, double, double> CircularMaze::GetCoordinateBounds()
     const {
-  return {-size_, -size_, size_, size_};
+  return std::make_tuple(-size_, -size_, size_, size_);
 }

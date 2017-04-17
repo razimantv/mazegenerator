@@ -120,5 +120,6 @@ int HexagonalMaze::VertexIndex(int sector, int updown, int row,
 
 std::tuple<double, double, double, double> HexagonalMaze::GetCoordinateBounds()
     const {
-  return {-size_, -sqrt(3) / 2 * size_, size_, sqrt(3) / 2 * size_};
+  return std::make_tuple(-size_, -sqrt(3) / 2 * size_, size_,
+                         sqrt(3) / 2 * size_);
 }
