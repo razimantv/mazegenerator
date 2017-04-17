@@ -15,7 +15,7 @@ void usage(std::ostream &out) {
   out << "Usage: mazegen [--help] [-m <maze type>] [-a <algorithm type>]"
       << std::endl;
   out << "               [-s <size> | -w <width> -h <height>]" << std::endl;
-  out << "               [-o <output prefix>]" << std::endl;
+  out << "               [-t <output type] [-o <output prefix>]" << std::endl;
 
   out << std::endl;
   out << "Optional arguments" << std::endl;
@@ -44,16 +44,22 @@ void usage(std::ostream &out) {
   out << "  -s      "
       << "Size (non-rectangular mazes)" << std::endl;
   out << "  -w,-h   "
-      << "Width and height(rectangular maze)" << std::endl;
+      << "Width and height (rectangular maze)" << std::endl;
+  out << "  -t      "
+      << "Output type" << std::endl;
+  out << "          "
+      << "0: svg output" << std::endl;
+  out << "          "
+      << "1: png output using gnuplot (.plt) intermediate " << std::endl;
   out << "  -o      "
-      << "Prefix for .plt and .png outputs" << std::endl;
+      << "Prefix for .svg, .plt and .png outputs" << std::endl;
 }
 
 int main(int argc, char *argv[]) {
   std::string outputprefix = "maze";
-  std::map<std::string, int> optionmap{{"-m", 0},    {"-a", 0},  {"-s", 20},
-                                       {"-w", 20},   {"-h", 20}, {"-o", 0},
-                                       {"--help", 0}};
+  std::map<std::string, int> optionmap{{"-m", 0},     {"-a", 0},  {"-s", 20},
+                                       {"-w", 20},    {"-h", 20}, {"-o", 0},
+                                       {"--help", 0}, {"-t", 0}};
 
   for (int i = 1; i < argc; i++) {
     if (optionmap.find(argv[i]) == optionmap.end()) {
@@ -182,16 +188,28 @@ int main(int argc, char *argv[]) {
       return 1;
   }
 
+  if (optionmap["-t"] < 0 or optionmap["-t"] > 1) {
+    std::cerr << "Unknown output type " << optionmap["-a"];
+    usage(std::cerr);
+    return 1;
+  }
+
   std::cout << "Initialising graph..." << std::endl;
   maze->InitialiseGraph();
   std::cout << "Generating maze..." << std::endl;
   maze->GenerateMaze(algorithm);
-  std::cout << "Exporting maze plotting parameters to '" << outputprefix
-            << ".plt' ..." << std::endl;
-  maze->PrintMaze(outputprefix);
-  std::cout << "Rendering maze to '" << outputprefix << ".png' using gnuplot..."
-            << std::endl;
-  system(("gnuplot '" + outputprefix + ".plt'").c_str());
+  if (optionmap["-t"] == 0) {
+    std::cout << "Rendering maze to '" << outputprefix << ".svg'..."
+              << std::endl;
+    maze->PrintMazeSVG(outputprefix);
+  } else {
+    std::cout << "Exporting maze plotting parameters to '" << outputprefix
+              << ".plt' ..." << std::endl;
+    maze->PrintMazeGnuplot(outputprefix);
+    std::cout << "Rendering maze to '" << outputprefix
+              << ".png' using gnuplot..." << std::endl;
+    system(("gnuplot '" + outputprefix + ".plt'").c_str());
+  }
   return 0;
 }
 

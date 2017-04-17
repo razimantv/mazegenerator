@@ -10,7 +10,8 @@ class Maze {
  public:
   Maze(int = 0, int = 0, int = 1);
   void GenerateMaze(MinimumSpanningtreeAlgorithm*);
-  void PrintMaze(const std::string&) const;
+  void PrintMazeGnuplot(const std::string&) const;
+  void PrintMazeSVG(const std::string&) const;
   void RemoveBorders(const std::vector<std::pair<int, int>>&);
   virtual void InitialiseGraph() = 0;
 

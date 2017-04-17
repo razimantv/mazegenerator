@@ -6,11 +6,13 @@
 class CellBorder {
  public:
   virtual std::string GnuplotPrintString() const = 0;
+  virtual std::string SVGPrintString() const = 0;
 };
 
 class LineBorder : public CellBorder {
  public:
   virtual std::string GnuplotPrintString() const;
+  virtual std::string SVGPrintString() const;
   LineBorder(double, double, double, double);
   LineBorder(std::tuple<double, double, double, double>);
 
@@ -21,6 +23,7 @@ class LineBorder : public CellBorder {
 class ArcBorder : public CellBorder {
  public:
   virtual std::string GnuplotPrintString() const;
+  virtual std::string SVGPrintString() const;
   ArcBorder(double, double, double, double, double);
 
  protected:
