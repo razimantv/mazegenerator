@@ -9,6 +9,7 @@
 #include "hexagonalmaze.h"
 #include "honeycombmaze.h"
 #include "kruskal.h"
+#include "looperasedrandomwalk.h"
 #include "rectangularmaze.h"
 
 void usage(std::ostream &out) {
@@ -24,7 +25,7 @@ void usage(std::ostream &out) {
   out << "  -m      "
       << "Maze type" << std::endl;
   out << "          "
-      << "0: Rectangular" << std::endl;
+      << "0: Rectangular (default)" << std::endl;
   out << "          "
       << "1: Hexagonal (triangular lattice)" << std::endl;
   out << "          "
@@ -36,23 +37,25 @@ void usage(std::ostream &out) {
   out << "  -a      "
       << "Algorithm type" << std::endl;
   out << "          "
-      << "0: Kruskal's algorithm" << std::endl;
+      << "0: Kruskal's algorithm (default)" << std::endl;
   out << "          "
       << "1: Depth-first search" << std::endl;
   out << "          "
       << "2: Breadth-first search" << std::endl;
+  out << "          "
+      << "3: Loop-erased random walk" << std::endl;
   out << "  -s      "
-      << "Size (non-rectangular mazes)" << std::endl;
+      << "Size (non-rectangular mazes, default: 20)" << std::endl;
   out << "  -w,-h   "
-      << "Width and height (rectangular maze)" << std::endl;
+      << "Width and height (rectangular maze, default: 20)" << std::endl;
   out << "  -t      "
       << "Output type" << std::endl;
   out << "          "
-      << "0: svg output" << std::endl;
+      << "0: svg output (default)" << std::endl;
   out << "          "
       << "1: png output using gnuplot (.plt) intermediate " << std::endl;
   out << "  -o      "
-      << "Prefix for .svg, .plt and .png outputs" << std::endl;
+      << "Prefix for .svg, .plt and .png outputs (default: maze)" << std::endl;
 }
 
 int main(int argc, char *argv[]) {
@@ -180,6 +183,11 @@ int main(int argc, char *argv[]) {
     case 2:
       std::cout << "Maze generation using Breadth-first search\n";
       algorithm = new BreadthFirstSearch;
+      break;
+
+    case 3:
+      std::cout << "Maze generation using Loop-erased random walk\n";
+      algorithm = new LoopErasedRandomWalk;
       break;
 
     default:

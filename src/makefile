@@ -1,11 +1,18 @@
 CXX ?= g++
-CXXFLAGS = -W -Wall -Wno-unused-result -O3 -std=c++11
+CXXFLAGS = -W -Wall -Wno-unused-result -O3 -I algorithms -I mazetypes -I maze \
+	-std=c++11
 
 all: mazegen
 
-OBJECTS = breadthfirstsearch.o cellborder.o circularhexagonmaze.o \
-	circularmaze.o depthfirstsearch.o hexagonalmaze.o honeycombmaze.o \
-	kruskal.o main.o maze.o minimumspanningtreealgorithm.o rectangularmaze.o
+OBJECTS = \
+	algorithms/breadthfirstsearch.o algorithms/depthfirstsearch.o \
+	algorithms/kruskal.o algorithms/looperasedrandomwalk.o \
+	algorithms/minimumspanningtreealgorithm.o \
+	mazetypes/circularhexagonmaze.o mazetypes/circularmaze.o \
+	mazetypes/hexagonalmaze.o mazetypes/honeycombmaze.o \
+	mazetypes/rectangularmaze.o \
+	maze/cellborder.o  maze/maze.o \
+	main.o 
 
 mazegen: $(OBJECTS)
 	@echo "Building" $@
