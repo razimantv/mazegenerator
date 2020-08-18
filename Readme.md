@@ -5,8 +5,9 @@
 
 Maze generator can create rectangular, hexagonal, honeycomb and circular mazes.
 Maze generation can be done using Kruskal's algorithm, depth-first search,
-breadth-first search or loop-erased random walk. Mazes can be rendered in svg
-or png format (using gnuplot as intermediate in the latter case).
+breadth-first search, loop-erased random walk or Prim's algorithm. Mazes can be
+rendered in svg or png format (using gnuplot as intermediate in the latter
+case).
 
 ## Dependencies
 
@@ -43,6 +44,7 @@ Optional arguments
           1: Depth-first search
           2: Breadth-first search
           3: Loop-erased random walk
+          3: Prim's algorithm
   -s      Size (non-rectangular mazes, default: 20)
   -w,-h   Width and height (rectangular maze, default: 20)
   -t      Output type

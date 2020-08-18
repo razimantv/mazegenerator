@@ -7,7 +7,7 @@ all: mazegen
 OBJECTS = \
 	algorithms/breadthfirstsearch.o algorithms/depthfirstsearch.o \
 	algorithms/kruskal.o algorithms/looperasedrandomwalk.o \
-	algorithms/minimumspanningtreealgorithm.o \
+	algorithms/minimumspanningtreealgorithm.o algorithms/prim.o \
 	mazetypes/circularhexagonmaze.o mazetypes/circularmaze.o \
 	mazetypes/hexagonalmaze.o mazetypes/honeycombmaze.o \
 	mazetypes/rectangularmaze.o \

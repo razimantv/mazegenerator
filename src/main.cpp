@@ -10,6 +10,7 @@
 #include "honeycombmaze.h"
 #include "kruskal.h"
 #include "looperasedrandomwalk.h"
+#include "prim.h"
 #include "rectangularmaze.h"
 
 void usage(std::ostream &out) {
@@ -44,6 +45,8 @@ void usage(std::ostream &out) {
       << "2: Breadth-first search" << std::endl;
   out << "          "
       << "3: Loop-erased random walk" << std::endl;
+  out << "          "
+      << "4: Prim's algorithm" << std::endl;
   out << "  -s      "
       << "Size (non-rectangular mazes, default: 20)" << std::endl;
   out << "  -w,-h   "
@@ -188,6 +191,11 @@ int main(int argc, char *argv[]) {
     case 3:
       std::cout << "Maze generation using Loop-erased random walk\n";
       algorithm = new LoopErasedRandomWalk;
+      break;
+
+    case 4:
+      std::cout << "Maze generation using Prim's algorithm\n";
+      algorithm = new Prim;
       break;
 
     default:
