@@ -39,12 +39,13 @@ Optional arguments
           2: Honeycomb
           3: Circular
           4: Circular (triangular lattice)
+          5: User-defined
   -a      Algorithm type
           0: Kruskal's algorithm (default)
           1: Depth-first search
           2: Breadth-first search
           3: Loop-erased random walk
-          3: Prim's algorithm
+          4: Prim's algorithm
   -s      Size (non-rectangular mazes, default: 20)
   -w,-h   Width and height (rectangular maze, default: 20)
   -t      Output type
