@@ -12,12 +12,14 @@
 #include "looperasedrandomwalk.h"
 #include "prim.h"
 #include "rectangularmaze.h"
+#include "usermaze.h"
 
 void usage(std::ostream &out) {
   out << "Usage: mazegen [--help] [-m <maze type>] [-a <algorithm type>]"
       << std::endl;
   out << "               [-s <size> | -w <width> -h <height>]" << std::endl;
-  out << "               [-t <output type] [-o <output prefix>]" << std::endl;
+  out << "               [-t <output type>] [-o <output prefix>]" << std::endl;
+  out << "               [-f <graph description file (for m=5)>]" << std::endl;
 
   out << std::endl;
   out << "Optional arguments" << std::endl;
@@ -35,6 +37,8 @@ void usage(std::ostream &out) {
       << "3: Circular" << std::endl;
   out << "          "
       << "4: Circular (triangular lattice)" << std::endl;
+  out << "          "
+      << "5: User defined graph" << std::endl;
   out << "  -a      "
       << "Algorithm type" << std::endl;
   out << "          "
@@ -62,10 +66,10 @@ void usage(std::ostream &out) {
 }
 
 int main(int argc, char *argv[]) {
-  std::string outputprefix = "maze";
-  std::map<std::string, int> optionmap{{"-m", 0},     {"-a", 0},  {"-s", 20},
-                                       {"-w", 20},    {"-h", 20}, {"-o", 0},
-                                       {"--help", 0}, {"-t", 0}};
+  std::string outputprefix = "maze", infile = "";
+  std::map<std::string, int> optionmap{{"-m", 0},  {"-a", 0},     {"-s", 20},
+                                       {"-w", 20}, {"-h", 20},    {"-o", 0},
+                                       {"-f", 0},  {"--help", 0}, {"-t", 0}};
 
   for (int i = 1; i < argc; i++) {
     if (optionmap.find(argv[i]) == optionmap.end()) {
@@ -81,6 +85,14 @@ int main(int argc, char *argv[]) {
         return 1;
       }
       outputprefix = argv[++i];
+      continue;
+    } else if (strcmp("-f", argv[i]) == 0) {
+      if (i + 1 == argc) {
+        std::cerr << "Missing maze input file" << std::endl;
+        usage(std::cerr);
+        return 1;
+      }
+      infile = argv[++i];
       continue;
     } else if (strcmp("--help", argv[i]) == 0) {
       usage(std::cout);
@@ -164,6 +176,17 @@ int main(int argc, char *argv[]) {
       std::cout << "Circular maze with triangular lattice of size "
                 << optionmap["-s"] << "\n";
       maze = new CircularHexagonMaze(optionmap["-s"]);
+      break;
+
+    case 5:
+      if (infile == "") {
+        std::cerr
+            << "Graph description file not provided for user-defined graph\n";
+        usage(std::cerr);
+        return 1;
+      }
+      std::cout << "User-defined graph\n";
+      maze = new UserMaze(infile);
       break;
 
     default:

@@ -10,7 +10,7 @@ OBJECTS = \
 	algorithms/minimumspanningtreealgorithm.o algorithms/prim.o \
 	mazetypes/circularhexagonmaze.o mazetypes/circularmaze.o \
 	mazetypes/hexagonalmaze.o mazetypes/honeycombmaze.o \
-	mazetypes/rectangularmaze.o \
+	mazetypes/rectangularmaze.o mazetypes/usermaze.o \
 	maze/cellborder.o  maze/maze.o \
 	main.o 
 
