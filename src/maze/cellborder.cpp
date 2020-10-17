@@ -41,5 +41,5 @@ std::string ArcBorder::SVGPrintString() const {
          std::to_string(r_ * 30) + ", 0, 0, 0, " + std::to_string(x1 * 30) +
          " " + std::to_string(y1 * 30) +
          "\" stroke=\"black\" stroke-linecap=\"round\" stroke-width=\"3\" "
-         "fill=\"transparent\"/>";
+         "fill=\"none\"/>";
 }
