@@ -3,7 +3,7 @@
 #include <numeric>
 #include <random>
 
-std::vector<std::pair<int, int>> Kruskal::MinimumSpanningTree(
+std::vector<std::pair<int, int>> Kruskal::SpanningTree(
     int vertices, const Graph& adjacencylist) {
   std::vector<std::pair<int, int>> edges;
   for (int i = 0; i < vertices; ++i) {
@@ -16,17 +16,16 @@ std::vector<std::pair<int, int>> Kruskal::MinimumSpanningTree(
   parent_ = std::vector<int>(vertices);
   std::iota(parent_.begin(), parent_.end(), 0);
 
-  minimumspanningtree.clear();
+  spanningtree.clear();
   for (const auto& edge : edges) {
     int u = GetParent(edge.first), v = GetParent(edge.second);
     if (u == v) continue;
     parent_[u] = v;
-    minimumspanningtree.push_back(edge);
+    spanningtree.push_back(edge);
   }
-  return minimumspanningtree;
+  return spanningtree;
 }
 
 int Kruskal::GetParent(int u) {
   return (parent_[u] == u) ? u : (parent_[u] = GetParent(parent_[u]));
 }
-

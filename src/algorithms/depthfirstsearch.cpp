@@ -1,13 +1,13 @@
 #include "depthfirstsearch.h"
 #include <algorithm>
 
-std::vector<std::pair<int, int>> DepthFirstSearch::MinimumSpanningTree(
+std::vector<std::pair<int, int>> DepthFirstSearch::SpanningTree(
     int vertices, const Graph& adjacencylist) {
-  minimumspanningtree.clear();
+  spanningtree.clear();
   visited = std::vector<bool>(vertices, 0);
   DFS(std::uniform_int_distribution<int>(0, vertices - 1)(generator),
       adjacencylist);
-  return minimumspanningtree;
+  return spanningtree;
 }
 
 void DepthFirstSearch::DFS(int vertex, const Graph& adjacencylist) {
@@ -19,7 +19,7 @@ void DepthFirstSearch::DFS(int vertex, const Graph& adjacencylist) {
   for (auto index : nodeorder) {
     int nextvertex = adjacencylist[vertex][index].first;
     if (nextvertex < 0 or visited[nextvertex]) continue;
-    minimumspanningtree.push_back({vertex, nextvertex});
+    spanningtree.push_back({vertex, nextvertex});
     DFS(nextvertex, adjacencylist);
   }
 }

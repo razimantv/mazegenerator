@@ -1,12 +1,12 @@
 #ifndef BREADTHFIRSTSEARCH_H
 #define BREADTHFIRSTSEARCH_H
 
+#include "spanningtreealgorithm.h"
 #include <vector>
-#include "minimumspanningtreealgorithm.h"
 
-class BreadthFirstSearch : public MinimumSpanningtreeAlgorithm {
+class BreadthFirstSearch : public SpanningtreeAlgorithm {
  public:
-  std::vector<std::pair<int, int>> MinimumSpanningTree(int, const Graph&);
+  std::vector<std::pair<int, int>> SpanningTree(int, const Graph&);
 
  private:
   std::vector<bool> visited;

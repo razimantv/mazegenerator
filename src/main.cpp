@@ -1,7 +1,3 @@
-#include <cstring>
-#include <iostream>
-#include <map>
-#include <string>
 #include "breadthfirstsearch.h"
 #include "circularhexagonmaze.h"
 #include "circularmaze.h"
@@ -13,6 +9,10 @@
 #include "prim.h"
 #include "rectangularmaze.h"
 #include "usermaze.h"
+#include <cstring>
+#include <iostream>
+#include <map>
+#include <string>
 
 void usage(std::ostream &out) {
   out << "Usage: mazegen [--help] [-m <maze type>] [-a <algorithm type>]"
@@ -117,7 +117,7 @@ int main(int argc, char *argv[]) {
   }
 
   Maze *maze;
-  MinimumSpanningtreeAlgorithm *algorithm;
+  SpanningtreeAlgorithm *algorithm;
 
   switch (optionmap["-m"]) {
     case 0:
@@ -251,4 +251,3 @@ int main(int argc, char *argv[]) {
   }
   return 0;
 }
-

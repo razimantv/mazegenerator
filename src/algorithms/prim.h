@@ -1,12 +1,12 @@
 #ifndef PRIM_H
 #define PRIM_H
 
+#include "spanningtreealgorithm.h"
 #include <vector>
-#include "minimumspanningtreealgorithm.h"
 
-class Prim: public MinimumSpanningtreeAlgorithm {
+class Prim : public SpanningtreeAlgorithm {
  public:
-  std::vector<std::pair<int, int>> MinimumSpanningTree(int, const Graph &);
+  std::vector<std::pair<int, int>> SpanningTree(int, const Graph &);
 
  private:
   void PrimAlgorithm(int, const Graph &);

@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <iostream>
 
-std::vector<std::pair<int, int>> BreadthFirstSearch::MinimumSpanningTree(
+std::vector<std::pair<int, int>> BreadthFirstSearch::SpanningTree(
     int vertices, const Graph& adjacencylist) {
   visited = std::vector<bool>(vertices, false);
 
@@ -11,14 +11,14 @@ std::vector<std::pair<int, int>> BreadthFirstSearch::MinimumSpanningTree(
   currentlevel.push_back(startvertex);
   visited[startvertex] = true;
 
-  minimumspanningtree.clear();
+  spanningtree.clear();
   while (!currentlevel.empty()) {
     for (auto vertex : currentlevel) {
       for (const auto& edge : adjacencylist[vertex]) {
         int nextvertex = edge.first;
         if (nextvertex < 0 or visited[nextvertex]) continue;
         visited[nextvertex] = true;
-        minimumspanningtree.push_back({vertex, nextvertex});
+        spanningtree.push_back({vertex, nextvertex});
         nextlevel.push_back(nextvertex);
       }
     }
@@ -27,5 +27,5 @@ std::vector<std::pair<int, int>> BreadthFirstSearch::MinimumSpanningTree(
     swap(currentlevel, nextlevel);
     shuffle(currentlevel.begin(), currentlevel.end(), generator);
   }
-  return minimumspanningtree;
+  return spanningtree;
 }

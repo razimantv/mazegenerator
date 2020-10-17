@@ -1,12 +1,12 @@
 #ifndef DEPTHFIRSTSEARCH_H
 #define DEPTHFIRSTSEARCH_H
 
+#include "spanningtreealgorithm.h"
 #include <vector>
-#include "minimumspanningtreealgorithm.h"
 
-class DepthFirstSearch : public MinimumSpanningtreeAlgorithm {
+class DepthFirstSearch : public SpanningtreeAlgorithm {
  public:
-  std::vector<std::pair<int, int>> MinimumSpanningTree(int, const Graph &);
+  std::vector<std::pair<int, int>> SpanningTree(int, const Graph &);
 
  private:
   std::vector<bool> visited;

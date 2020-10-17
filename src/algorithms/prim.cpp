@@ -1,12 +1,12 @@
 #include "prim.h"
 #include <algorithm>
 
-std::vector<std::pair<int, int>> Prim::MinimumSpanningTree(
+std::vector<std::pair<int, int>> Prim::SpanningTree(
     int vertices, const Graph& adjacencylist) {
-  minimumspanningtree.clear();
+  spanningtree.clear();
 
   PrimAlgorithm(vertices, adjacencylist);
-  return minimumspanningtree;
+  return spanningtree;
 }
 
 void Prim::PrimAlgorithm(int vertices, const Graph& adjacencylist) {
@@ -21,7 +21,7 @@ void Prim::PrimAlgorithm(int vertices, const Graph& adjacencylist) {
         boundary.push_back({vertex, p.first});
     }
 
-    std::pair<int,int> nextedge = {-1,-1};
+    std::pair<int, int> nextedge = {-1, -1};
     do {
       int index =
           std::uniform_int_distribution<int>(0, boundary.size() - 1)(generator);
@@ -30,7 +30,7 @@ void Prim::PrimAlgorithm(int vertices, const Graph& adjacencylist) {
       boundary.pop_back();
     } while (nextedge.first == -1);
 
-    minimumspanningtree.push_back(nextedge);
+    spanningtree.push_back(nextedge);
     vertex = nextedge.second;
   }
 }

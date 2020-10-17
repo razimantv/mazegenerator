@@ -1,12 +1,12 @@
 #ifndef LOOPERASEDRANDOMWALK_H
 #define LOOPERASEDRANDOMWALK_H
 
+#include "spanningtreealgorithm.h"
 #include <vector>
-#include "minimumspanningtreealgorithm.h"
 
-class LoopErasedRandomWalk: public MinimumSpanningtreeAlgorithm {
+class LoopErasedRandomWalk : public SpanningtreeAlgorithm {
  public:
-  std::vector<std::pair<int, int>> MinimumSpanningTree(int, const Graph &);
+  std::vector<std::pair<int, int>> SpanningTree(int, const Graph &);
 
  private:
   std::vector<int> visited;

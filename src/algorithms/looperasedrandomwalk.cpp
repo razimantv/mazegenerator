@@ -1,9 +1,9 @@
 #include "looperasedrandomwalk.h"
 #include <algorithm>
 
-std::vector<std::pair<int, int>> LoopErasedRandomWalk::MinimumSpanningTree(
+std::vector<std::pair<int, int>> LoopErasedRandomWalk::SpanningTree(
     int vertices, const Graph& adjacencylist) {
-  minimumspanningtree.clear();
+  spanningtree.clear();
   visited = std::vector<int>(vertices, 0);
 
   std::vector<int> nodes(vertices);
@@ -16,7 +16,7 @@ std::vector<std::pair<int, int>> LoopErasedRandomWalk::MinimumSpanningTree(
     LERW(nodes[i], round, adjacencylist);
   }
 
-  return minimumspanningtree;
+  return spanningtree;
 }
 
 void LoopErasedRandomWalk::LERW(int vertex, int round,
@@ -41,13 +41,13 @@ void LoopErasedRandomWalk::LERW(int vertex, int round,
         vertex = current.back();
         visited[vertex] = 0;
         current.pop_back();
-      } while(vertex != nextvertex);
+      } while (vertex != nextvertex);
     }
 
     vertex = nextvertex;
   }
   current.push_back(vertex);
-  for(unsigned int i=0;i+1<current.size();++i) {
-    minimumspanningtree.push_back({current[i],current[i+1]});
+  for (unsigned int i = 0; i + 1 < current.size(); ++i) {
+    spanningtree.push_back({current[i], current[i + 1]});
   }
 }

@@ -1,12 +1,12 @@
 #ifndef KRUSKAL_H
 #define KRUSKAL_H
 
+#include "spanningtreealgorithm.h"
 #include <vector>
-#include "minimumspanningtreealgorithm.h"
 
-class Kruskal : public MinimumSpanningtreeAlgorithm {
+class Kruskal : public SpanningtreeAlgorithm {
  public:
-  std::vector<std::pair<int, int>> MinimumSpanningTree(int, const Graph&);
+  std::vector<std::pair<int, int>> SpanningTree(int, const Graph&);
 
  private:
   std::vector<int> parent_;

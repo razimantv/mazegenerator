@@ -1,5 +1,5 @@
-#include "minimumspanningtreealgorithm.h"
+#include "spanningtreealgorithm.h"
 
-MinimumSpanningtreeAlgorithm::MinimumSpanningtreeAlgorithm() {
+SpanningtreeAlgorithm::SpanningtreeAlgorithm() {
   generator = std::mt19937(randomdevice());
 }

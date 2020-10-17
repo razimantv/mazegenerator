@@ -11,10 +11,9 @@ void Maze::InitialiseGraph() {
   adjacencylist_.resize(vertices_);
 }
 
-void Maze::GenerateMaze(MinimumSpanningtreeAlgorithm* algorithm) {
-  auto minimumspanningtree =
-      algorithm->MinimumSpanningTree(vertices_, adjacencylist_);
-  RemoveBorders(minimumspanningtree);
+void Maze::GenerateMaze(SpanningtreeAlgorithm* algorithm) {
+  auto spanningtree = algorithm->SpanningTree(vertices_, adjacencylist_);
+  RemoveBorders(spanningtree);
 }
 
 void Maze::RemoveBorders(const std::vector<std::pair<int, int>>& edges) {
