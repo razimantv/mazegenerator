@@ -1,6 +1,10 @@
 #ifndef MAZE_H
 #define MAZE_H
 
+#ifndef M_PI
+#define M_PI 3.1415926
+#endif
+
 #include "cellborder.h"
 #include "spanningtreealgorithm.h"
 #include <memory>
