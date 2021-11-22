@@ -63,13 +63,22 @@ void usage(std::ostream &out) {
       << "1: png output using gnuplot (.plt) intermediate " << std::endl;
   out << "  -o      "
       << "Prefix for .svg, .plt and .png outputs (default: maze)" << std::endl;
+  out << "  -c      "
+      << "The color of the lines of the maze (defaut: black)" << std::endl;
+  out << "  -b      "
+      << "The color of the background of the maze (defaut: white)" << std::endl;
+  out << "  -l      "
+      << "The width of the lines of the maze (default: 3)" << std::endl;
 }
 
 int main(int argc, char *argv[]) {
   std::string outputprefix = "maze", infile = "";
+  std::string color = "black", backColor = "white";
+  int strokeWidth = 3;
   std::map<std::string, int> optionmap{{"-m", 0},  {"-a", 0},     {"-s", 20},
                                        {"-w", 20}, {"-h", 20},    {"-o", 0},
-                                       {"-f", 0},  {"--help", 0}, {"-t", 0}};
+                                       {"-f", 0},  {"--help", 0}, {"-t", 0},
+                                       {"-c", 0},  {"-l", 0},     {"-b", 0}};
 
   for (int i = 1; i < argc; i++) {
     if (optionmap.find(argv[i]) == optionmap.end()) {
@@ -77,7 +86,7 @@ int main(int argc, char *argv[]) {
       usage(std::cerr);
       return 1;
     }
-
+    
     if (strcmp("-o", argv[i]) == 0) {
       if (i + 1 == argc) {
         std::cerr << "Missing output prefix" << std::endl;
@@ -104,16 +113,26 @@ int main(int argc, char *argv[]) {
       usage(std::cerr);
       return 1;
     }
-    int x;
-    try {
-      x = std::stoi(argv[i + 1]);
-    } catch (...) {
-      std::cerr << "Invalid argument " << argv[i + 1] << " for option "
-                << argv[i] << "\n";
-      usage(std::cerr);
-      return 1;
+
+    if (strcmp("-c", argv[i]) == 0) {
+      std::cout << "hi\n";
+      color = argv[++i];
+    } else if (strcmp("-l", argv[i]) == 0) {
+      strokeWidth = std::stoi(argv[++i]);
+    } else if (strcmp("-b", argv[i]) == 0) {
+      backColor = argv[++i];
+    } else {
+      int x;
+      try {
+        x = std::stoi(argv[i + 1]);
+      } catch (...) {
+       std::cerr << "Invalid argument " << argv[i + 1] << " for option "
+                 << argv[i] << "\n";
+       usage(std::cerr);
+       return 0;
+      }
+      optionmap[argv[i++]] = x;
     }
-    optionmap[argv[i++]] = x;
   }
 
   Maze *maze;
@@ -234,9 +253,9 @@ int main(int argc, char *argv[]) {
   }
 
   Style::init({
-    "magenta",
-    "black",
-    9
+    color,
+    backColor,
+    strokeWidth 
   });
 
   std::cout << "Initialising graph..." << std::endl;
