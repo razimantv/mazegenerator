@@ -233,6 +233,12 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
+  Style::init({
+    "magenta",
+    "black",
+    9
+  });
+
   std::cout << "Initialising graph..." << std::endl;
   maze->InitialiseGraph();
   std::cout << "Generating maze..." << std::endl;

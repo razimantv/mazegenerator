@@ -11,7 +11,7 @@ OBJECTS = \
 	mazetypes/circularhexagonmaze.o mazetypes/circularmaze.o \
 	mazetypes/hexagonalmaze.o mazetypes/honeycombmaze.o \
 	mazetypes/rectangularmaze.o mazetypes/usermaze.o \
-	maze/cellborder.o  maze/maze.o \
+	maze/cellborder.o  maze/maze.o maze/style.o \
 	main.o
 
 mazegen: $(OBJECTS)

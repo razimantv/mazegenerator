@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "style.h"
+
 class CellBorder {
  public:
   virtual std::string GnuplotPrintString() const = 0;

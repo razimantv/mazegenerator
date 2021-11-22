@@ -19,7 +19,7 @@ std::string LineBorder::SVGPrintString() const {
   return "<line x1=\"" + std::to_string(x1_ * 30) + "\" x2=\"" +
          std::to_string(x2_ * 30) + "\" y1=\"" + std::to_string(y1_ * 30) +
          "\" y2=\"" + std::to_string(y2_ * 30) +
-         "\" stroke=\"black\" stroke-linecap=\"round\" stroke-width=\"3\"/>";
+         "\" stroke=\"" + Style::get().strokeColor + "\" stroke-linecap=\"round\" stroke-width=\"" + std::to_string(Style::get().strokeWidth) + "\"/>";
 }
 
 ArcBorder::ArcBorder(double cx, double cy, double r, double theta1,
@@ -40,6 +40,6 @@ std::string ArcBorder::SVGPrintString() const {
          std::to_string(y2 * 30) + " A " + std::to_string(r_ * 30) + " " +
          std::to_string(r_ * 30) + ", 0, 0, 0, " + std::to_string(x1 * 30) +
          " " + std::to_string(y1 * 30) +
-         "\" stroke=\"black\" stroke-linecap=\"round\" stroke-width=\"3\" "
+         "\" stroke=\"" + Style::get().strokeColor + "\" stroke-linecap=\"round\" stroke-width=\"" + std::to_string(Style::get().strokeWidth) + "\" "
          "fill=\"none\"/>";
 }

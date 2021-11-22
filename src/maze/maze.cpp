@@ -91,7 +91,7 @@ void Maze::PrintMazeSVG(const std::string& outputprefix) const {
           << yresolution - (1 - ymin) * 30 << ") scale(1,-1)\">" << std::endl;
   svgfile << "<rect x=\"" << (xmin - 1) * 30 << "\" y=\"" << (ymin - 1) * 30
           << "\" width=\"" << xresolution << "\" height=\"" << yresolution
-          << "\" fill=\"white\"/>" << std::endl;
+          << "\" fill=\"" + Style::get().backgroundColor + "\"/>" << std::endl;
 
   for (int i = 0; i < vertices_; ++i) {
     for (const auto& edge : adjacencylist_[i]) {
