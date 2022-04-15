@@ -8,7 +8,7 @@ std::vector<std::pair<int, int>> Kruskal::SpanningTree(
   std::vector<std::pair<int, int>> edges;
   for (int i = 0; i < vertices; ++i) {
     for (const auto& edge : adjacencylist[i]) {
-      if (edge.first > i) edges.push_back({i, edge.first});
+      if (std::get<0>(edge) > i) edges.push_back({i, std::get<0>(edge)});
     }
   }
   shuffle(edges.begin(), edges.end(), generator);
@@ -18,7 +18,7 @@ std::vector<std::pair<int, int>> Kruskal::SpanningTree(
 
   spanningtree.clear();
   for (const auto& edge : edges) {
-    int u = GetParent(edge.first), v = GetParent(edge.second);
+    int u = GetParent(std::get<0>(edge)), v = GetParent(edge.second);
     if (u == v) continue;
     parent_[u] = v;
     spanningtree.push_back(edge);

@@ -29,10 +29,8 @@ void LoopErasedRandomWalk::LERW(int vertex, int round,
     int nextvertex;
     do {
       nextvertex =
-          adjacencylist[vertex]
-                       [std::uniform_int_distribution<int>(
-                            0, adjacencylist[vertex].size() - 1)(generator)]
-                           .first;
+          std::get<0>(adjacencylist[vertex][std::uniform_int_distribution<int>(
+              0, adjacencylist[vertex].size() - 1)(generator)]);
     } while (nextvertex < 0);
 
     if (visited[nextvertex] == round) {

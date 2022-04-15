@@ -15,7 +15,7 @@ std::vector<std::pair<int, int>> BreadthFirstSearch::SpanningTree(
   while (!currentlevel.empty()) {
     for (auto vertex : currentlevel) {
       for (const auto& edge : adjacencylist[vertex]) {
-        int nextvertex = edge.first;
+        int nextvertex = std::get<0>(edge);
         if (nextvertex < 0 or visited[nextvertex]) continue;
         visited[nextvertex] = true;
         spanningtree.push_back({vertex, nextvertex});

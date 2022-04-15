@@ -41,7 +41,7 @@ void UserMaze::InitialiseGraph() {
     } else
       continue;
     if (j != -1)
-      adjacencylist_[j].push_back({i, adjacencylist_[i].back().second});
+      adjacencylist_[j].push_back({i, std::get<1>(adjacencylist_[i].back())});
   }
 }
 

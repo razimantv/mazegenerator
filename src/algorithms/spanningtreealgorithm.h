@@ -6,8 +6,8 @@
 #include <random>
 #include <vector>
 
-typedef std::vector<std::vector<std::pair<int, std::shared_ptr<CellBorder>>>>
-    Graph;
+typedef std::tuple<int, std::shared_ptr<CellBorder>> Edge;
+typedef std::vector<std::vector<Edge>> Graph;
 
 class SpanningtreeAlgorithm {
  public:

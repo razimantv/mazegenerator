@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
+#include "depthfirstsearch.h"
 
 Maze::Maze(int vertices, int startvertex, int endvertex)
     : vertices_(vertices), startvertex_(startvertex), endvertex_(endvertex) {}
@@ -13,28 +14,43 @@ void Maze::InitialiseGraph() {
 
 void Maze::GenerateMaze(SpanningtreeAlgorithm* algorithm) {
   auto spanningtree = algorithm->SpanningTree(vertices_, adjacencylist_);
+  Solve(spanningtree);
   RemoveBorders(spanningtree);
 }
 
-void Maze::RemoveBorders(const std::vector<std::pair<int, int>>& edges) {
-  for (const auto& edge : edges) {
-    int u = edge.first, v = edge.second;
-    for (int i = 0; i < (int)adjacencylist_[u].size(); ++i) {
-      if (adjacencylist_[u][i].first == v) {
-        adjacencylist_[u].erase(adjacencylist_[u].begin() + i);
-        break;
-      }
-    }
-    for (int i = 0; i < (int)adjacencylist_[v].size(); ++i) {
-      if (adjacencylist_[v][i].first == u) {
-        adjacencylist_[v].erase(adjacencylist_[v].begin() + i);
-        break;
-      }
-    }
+void Maze::Solve(const std::vector<std::pair<int, int>>& edges) {
+  Graph spanningtreegraph(vertices_);
+  for (const auto& [u, v] : edges) {
+    spanningtreegraph[u].push_back(
+        *std::find_if(adjacencylist_[u].begin(), adjacencylist_[u].end(),
+                      [v = v](const Edge& e) { return std::get<0>(e) == v; }));
+    spanningtreegraph[v].push_back(
+        *std::find_if(adjacencylist_[v].begin(), adjacencylist_[v].end(),
+                      [u = u](const Edge& e) { return std::get<0>(e) == u; }));
+  }
+
+  DepthFirstSearch D;
+  auto parent = D.Solve(vertices_, spanningtreegraph, startvertex_);
+  solution_ = Graph(vertices_);
+  for(int u = endvertex_; parent[u]!=u; u=parent[u]) {
+    solution_[u].push_back(*std::find_if(
+        spanningtreegraph[u].begin(), spanningtreegraph[u].end(),
+        [u, &parent](const Edge& e) { return std::get<0>(e) == parent[u]; }));
   }
 }
 
-void Maze::PrintMazeGnuplot(const std::string& outputprefix) const {
+void Maze::RemoveBorders(const std::vector<std::pair<int, int>>& edges) {
+  for (const auto& [u, v] : edges) {
+    adjacencylist_[u].erase(
+        std::find_if(adjacencylist_[u].begin(), adjacencylist_[u].end(),
+                     [v = v](const Edge& e) { return std::get<0>(e) == v; }));
+    adjacencylist_[v].erase(
+        std::find_if(adjacencylist_[v].begin(), adjacencylist_[v].end(),
+                     [u = u](const Edge& e) { return std::get<0>(e) == u; }));
+  }
+}
+
+void Maze::PrintMazeGnuplot(const std::string& outputprefix, bool solution) const {
   std::ofstream gnuplotfile(outputprefix + ".plt");
   if (!gnuplotfile) {
     std::cerr << "Error opening " << outputprefix << ".plt for writing.\n";
@@ -64,16 +80,17 @@ void Maze::PrintMazeGnuplot(const std::string& outputprefix) const {
   gnuplotfile << "set multiplot\n";
   for (int i = 0; i < vertices_; ++i) {
     for (const auto& edge : adjacencylist_[i]) {
-      if (edge.first < i)
-        gnuplotfile << edge.second->GnuplotPrintString() << "\n";
+      if (std::get<0>(edge) < i)
+        gnuplotfile << std::get<1>(edge)->GnuplotPrintString("black") << "\n";
     }
   }
+
   gnuplotfile << "plot 1/0 notitle\n";
   gnuplotfile << "unset multiplot\n";
   gnuplotfile << "set output\n";
 }
 
-void Maze::PrintMazeSVG(const std::string& outputprefix) const {
+void Maze::PrintMazeSVG(const std::string& outputprefix, bool solution) const {
   std::ofstream svgfile(outputprefix + ".svg");
   if (!svgfile) {
     std::cerr << "Error opening " << outputprefix << ".svg for writing.\n";
@@ -95,8 +112,8 @@ void Maze::PrintMazeSVG(const std::string& outputprefix) const {
 
   for (int i = 0; i < vertices_; ++i) {
     for (const auto& edge : adjacencylist_[i]) {
-      if (edge.first < i) {
-        svgfile << edge.second->SVGPrintString() << "\n";
+      if (std::get<0>(edge) < i) {
+        svgfile << std::get<1>(edge)->SVGPrintString("black") << "\n";
       }
     }
   }

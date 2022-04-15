@@ -17,8 +17,8 @@ void Prim::PrimAlgorithm(int vertices, const Graph& adjacencylist) {
   for (int i = 1; i < vertices; ++i) {
     visited[vertex] = true;
     for (auto p : adjacencylist[vertex]) {
-      if (p.first != -1 and !visited[p.first])
-        boundary.push_back({vertex, p.first});
+      if (std::get<0>(p) != -1 and !visited[std::get<0>(p)])
+        boundary.push_back({vertex, std::get<0>(p)});
     }
 
     std::pair<int, int> nextedge = {-1, -1};
