@@ -71,8 +71,8 @@ void Maze::PrintMazeGnuplot(const std::string& outputprefix, bool solution) cons
   gnuplotfile << "set xrange[" << xmin - 1 << ":" << xmax + 1 << "]\n";
   gnuplotfile << "set yrange[" << ymin - 1 << ":" << ymax + 1 << "]\n";
 
-  int xresolution = (xmax - xmin + 2) * 30,
-      yresolution = (ymax - ymin + 2) * 30;
+  int xresolution = int((xmax - xmin + 2) * 30),
+      yresolution = int((ymax - ymin + 2) * 30);
   gnuplotfile << "set term pngcairo mono enhanced size " << xresolution << ","
               << yresolution << "\n";
 
@@ -99,8 +99,8 @@ void Maze::PrintMazeSVG(const std::string& outputprefix, bool solution) const {
   }
   double xmin, ymin, xmax, ymax;
   std::tie(xmin, ymin, xmax, ymax) = GetCoordinateBounds();
-  int xresolution = (xmax - xmin + 2) * 30,
-      yresolution = (ymax - ymin + 2) * 30;
+  int xresolution = int((xmax - xmin + 2) * 30),
+      yresolution = int((ymax - ymin + 2) * 30);
 
   svgfile << "<svg width=\"" << xresolution << "\" height=\"" << yresolution
           << "\" xmlns=\"http://www.w3.org/2000/svg\">" << std::endl;

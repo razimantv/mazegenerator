@@ -1,6 +1,7 @@
 #include "depthfirstsearch.h"
 #include <algorithm>
 #include <iostream>
+#include <numeric>
 
 std::vector<std::pair<int, int>> DepthFirstSearch::SpanningTree(
     int vertices, const Graph& adjacencylist) {
