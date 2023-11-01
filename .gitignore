@@ -5,3 +5,7 @@ tags
 *.o
 examples/*_*.png
 examples/*_*.svg
+msvc/Debug
+msvc/Release
+msvc/x64/Debug
+msvc/x64/Release

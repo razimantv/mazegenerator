@@ -1,5 +1,6 @@
 #include "looperasedrandomwalk.h"
 #include <algorithm>
+#include <numeric>
 
 std::vector<std::pair<int, int>> LoopErasedRandomWalk::SpanningTree(
     int vertices, const Graph& adjacencylist) {
@@ -30,7 +31,7 @@ void LoopErasedRandomWalk::LERW(int vertex, int round,
     do {
       nextvertex =
           std::get<0>(adjacencylist[vertex][std::uniform_int_distribution<int>(
-              0, adjacencylist[vertex].size() - 1)(generator)]);
+              0, int(adjacencylist[vertex].size()) - 1)(generator)]);
     } while (nextvertex < 0);
 
     if (visited[nextvertex] == round) {

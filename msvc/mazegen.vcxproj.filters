@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="src\maze">
+      <UniqueIdentifier>{c877921b-4826-47ca-a89c-3ea2f4e50c18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\mazetypes">
+      <UniqueIdentifier>{26aca6f5-4924-430a-8f9a-fa4a8a11bf0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\algorithms">
+      <UniqueIdentifier>{6a7cc56d-8498-4dec-971a-e2e15599c38f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\maze\cellborder.cpp">
+      <Filter>src\maze</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\maze\maze.cpp">
+      <Filter>src\maze</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mazetypes\circularhexagonmaze.cpp">
+      <Filter>src\mazetypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mazetypes\circularmaze.cpp">
+      <Filter>src\mazetypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mazetypes\hexagonalmaze.cpp">
+      <Filter>src\mazetypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mazetypes\honeycombmaze.cpp">
+      <Filter>src\mazetypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mazetypes\rectangularmaze.cpp">
+      <Filter>src\mazetypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mazetypes\usermaze.cpp">
+      <Filter>src\mazetypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\breadthfirstsearch.cpp">
+      <Filter>src\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\depthfirstsearch.cpp">
+      <Filter>src\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\kruskal.cpp">
+      <Filter>src\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\looperasedrandomwalk.cpp">
+      <Filter>src\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\prim.cpp">
+      <Filter>src\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\algorithms\spanningtreealgorithm.cpp">
+      <Filter>src\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\maze\cellborder.h">
+      <Filter>src\maze</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\maze\maze.h">
+      <Filter>src\maze</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mazetypes\circularhexagonmaze.h">
+      <Filter>src\mazetypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mazetypes\circularmaze.h">
+      <Filter>src\mazetypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mazetypes\hexagonalmaze.h">
+      <Filter>src\mazetypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mazetypes\honeycombmaze.h">
+      <Filter>src\mazetypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mazetypes\rectangularmaze.h">
+      <Filter>src\mazetypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mazetypes\usermaze.h">
+      <Filter>src\mazetypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\algorithms\breadthfirstsearch.h">
+      <Filter>src\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\algorithms\depthfirstsearch.h">
+      <Filter>src\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\algorithms\kruskal.h">
+      <Filter>src\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\algorithms\looperasedrandomwalk.h">
+      <Filter>src\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\algorithms\prim.h">
+      <Filter>src\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\algorithms\spanningtreealgorithm.h">
+      <Filter>src\algorithms</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

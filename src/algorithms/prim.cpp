@@ -24,7 +24,7 @@ void Prim::PrimAlgorithm(int vertices, const Graph& adjacencylist) {
     std::pair<int, int> nextedge = {-1, -1};
     do {
       int index =
-          std::uniform_int_distribution<int>(0, boundary.size() - 1)(generator);
+          std::uniform_int_distribution<int>(0, int(boundary.size()) - 1)(generator);
       std::swap(boundary[index], boundary.back());
       if (!visited[boundary.back().second]) nextedge = boundary.back();
       boundary.pop_back();
