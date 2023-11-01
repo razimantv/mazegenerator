@@ -9,6 +9,7 @@
 #include "prim.h"
 #include "rectangularmaze.h"
 #include "usermaze.h"
+#include "disjointsetforest.h"
 #include <cstring>
 #include <iostream>
 #include <map>
@@ -51,6 +52,8 @@ void usage(std::ostream &out) {
       << "3: Loop-erased random walk" << std::endl;
   out << "          "
       << "4: Prim's algorithm" << std::endl;
+  out << "           "
+      << "5: Disjoint set forest merge." << std::endl;
   out << "  -s      "
       << "Size (non-rectangular mazes, default: 20)" << std::endl;
   out << "  -w,-h   "
@@ -219,6 +222,11 @@ int main(int argc, char *argv[]) {
     case 4:
       std::cout << "Maze generation using Prim's algorithm\n";
       algorithm = new Prim;
+      break;
+
+    case 5:
+      std::cout << "Maze generation using Disjoin set forest merge\n";
+      algorithm = new DisjointSetForest;
       break;
 
     default:

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\algorithms\breadthfirstsearch.cpp" />
     <ClCompile Include="..\src\algorithms\depthfirstsearch.cpp" />
+    <ClCompile Include="..\src\algorithms\disjointsetforest.cpp" />
     <ClCompile Include="..\src\algorithms\kruskal.cpp" />
     <ClCompile Include="..\src\algorithms\looperasedrandomwalk.cpp" />
     <ClCompile Include="..\src\algorithms\prim.cpp" />
@@ -38,6 +39,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\algorithms\breadthfirstsearch.h" />
     <ClInclude Include="..\src\algorithms\depthfirstsearch.h" />
+    <ClInclude Include="..\src\algorithms\disjointsetforest.h" />
     <ClInclude Include="..\src\algorithms\kruskal.h" />
     <ClInclude Include="..\src\algorithms\looperasedrandomwalk.h" />
     <ClInclude Include="..\src\algorithms\prim.h" />

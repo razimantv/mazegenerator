@@ -8,6 +8,7 @@ OBJECTS = \
 	algorithms/breadthfirstsearch.o algorithms/depthfirstsearch.o \
 	algorithms/kruskal.o algorithms/looperasedrandomwalk.o \
 	algorithms/spanningtreealgorithm.o algorithms/prim.o \
+	algorithms/disjointsetforest.o \
 	mazetypes/circularhexagonmaze.o mazetypes/circularmaze.o \
 	mazetypes/hexagonalmaze.o mazetypes/honeycombmaze.o \
 	mazetypes/rectangularmaze.o mazetypes/usermaze.o \
