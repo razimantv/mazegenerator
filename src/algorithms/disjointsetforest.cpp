@@ -75,7 +75,7 @@ DisjointSetForest::DisjointSetForest()
 	int i, j = std::uniform_int_distribution<int>(0, numPrimes - 1)(this->generator);
 	for (i = 0; i < numPrimes; i++)
 	{
-		if (edgeArray.size() % primes[i] != 0)
+		if (edgeArray.size() % primes[j] != 0)
 			break;
 		j = (j + 1) % numPrimes;
 	}
