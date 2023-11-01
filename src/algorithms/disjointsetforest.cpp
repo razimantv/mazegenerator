@@ -80,7 +80,7 @@ DisjointSetForest::DisjointSetForest()
 		j = (j + 1) % numPrimes;
 	}
 	assert(i != numPrimes);
-	int chosenPrime = primes[i];
+	int chosenPrime = primes[j];
 	
 	// This is not a truly random method of walking the edge array, but that's the idea here.
 	// According to group-theory, we will not repeat an edge.
