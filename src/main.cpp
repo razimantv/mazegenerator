@@ -8,6 +8,7 @@
 #include "looperasedrandomwalk.h"
 #include "prim.h"
 #include "rectangularmaze.h"
+#include "triangularmaze.h"
 #include "usermaze.h"
 #include <cstring>
 #include <iostream>
@@ -39,6 +40,8 @@ void usage(std::ostream &out) {
       << "4: Circular (triangular lattice)" << std::endl;
   out << "          "
       << "5: User defined graph" << std::endl;
+  out << "          "
+      << "6: Triangular" << std::endl;
   out << "  -a      "
       << "Algorithm type" << std::endl;
   out << "          "
@@ -187,6 +190,17 @@ int main(int argc, char *argv[]) {
       }
       std::cout << "User-defined graph\n";
       maze = new UserMaze(infile);
+      break;
+
+    case 6:
+      if (optionmap["-s"] < 1) {
+        std::cerr << "Invalid size " << optionmap["-s"]
+                  << " for triangular maze\n";
+        usage(std::cerr);
+        return 1;
+      }
+      std::cout << "Triangular maze of size " << optionmap["-s"] << "\n";
+      maze = new TriangularMaze(optionmap["-s"]);
       break;
 
     default:
