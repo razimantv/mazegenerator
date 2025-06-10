@@ -8,7 +8,6 @@ MAZE_SOURCES = ../src/maze/maze.cpp \
                ../src/maze/cellborder.cpp \
                ../src/mazetypes/rectangularmaze.cpp \
                ../src/mazetypes/circularmaze.cpp \
-               ../src/mazetypes/triangularmaze.cpp \
                ../src/mazetypes/hexagonalmaze.cpp \
                ../src/algorithms/spanningtreealgorithm.cpp \
                ../src/algorithms/depthfirstsearch.cpp \
