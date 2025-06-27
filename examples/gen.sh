@@ -6,4 +6,5 @@
 ../src/mazegen -m 3 -s 20 -a 1 -t 0 -o circular_DFS
 ../src/mazegen -m 4 -s 20 -a 0 -o circularhexagon_Kruskal
 ../src/mazegen -m 5 -a 4 -f manual_input.xy -o manual_Prim
+../src/mazegen -m 6 -s 20 -a 3 -o triangular_LERW
 
