@@ -3,11 +3,11 @@
 **Generate mazes of different shapes and arbitrary sizes**
 ![Maze types](/examples/mazes.png "Maze types")
 
-Maze generator can create rectangular, hexagonal, honeycomb and circular mazes.
-Maze generation can be done using Kruskal's algorithm, depth-first search,
-breadth-first search, loop-erased random walk or Prim's algorithm. Mazes can be
-rendered in svg or png format (using gnuplot as intermediate in the latter
-case).
+Maze generator can create rectangular, hexagonal, honeycomb, circular, and
+triangular mazes.  Maze generation can be done using Kruskal's algorithm,
+depth-first search, breadth-first search, loop-erased random walk or Prim's
+algorithm. Mazes can be rendered in svg or png format (using gnuplot as
+intermediate in the latter case).
 
 ## Dependencies
 
@@ -40,6 +40,7 @@ Optional arguments
           3: Circular
           4: Circular (triangular lattice)
           5: User-defined
+          6: Triangular (rectangular lattice)
   -a      Algorithm type
           0: Kruskal's algorithm (default)
           1: Depth-first search
