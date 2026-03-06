@@ -1,5 +1,7 @@
 # Maze generator
 
+**Update**: Check out [Samhan](https://github.com/samhann)'s [typescript port](https://samhann.github.io/mazegenerator/) you can run from the browser!
+
 **Generate mazes of different shapes and arbitrary sizes**
 ![Maze types](/examples/mazes.png "Maze types")
 
